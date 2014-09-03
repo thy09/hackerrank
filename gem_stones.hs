@@ -7,11 +7,11 @@ main = do
 
 getLines :: Int -> IO [String]
 getLines count = do
-  sequence (take count (repeat getLine))
+  sequence (replicate count getLine)
 
 unique :: [Char] -> [Char]
 unique [] = []
-unique (x:xs) = [x] ++ [y | y <- (unique xs),x /= y]
+unique (x:xs) = x:[y | y <- (unique xs),x /= y]
 
 getIdx :: [Char] -> Char -> Int
 getIdx [] c = -1
